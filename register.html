@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<title>ManagE</title>
+<style>
+{% load staticfiles %}
+body {
+	background-image: url("{% static 'assets/bg.jpg' %}");
+	background-size: cover;
+}
+.container1 {
+	width: 100%;
+	height: 100%;
+	display: inline-block;
+	text-align: center;
+}
+.container2 {
+	width: 50%
+	text-align: center;
+	display: inline-block;
+	margin: auto;
+}
+.btn {
+	padding: 20px;
+	width: 250px;
+	background-color: yellow;
+	border: none;
+}
+
+</style>
+
+<body>
+<div class="container1">
+<div class="container2">
+	<h1>Register Now</h1>
+	<form method="POST">
+		{% csrf_token %}
+		<fieldset class="form-group">
+			{{ form.as_p }}
+			<legend class="bd-bottom mb-4">Join Today</legend>
+			
+		</fieldset>
+		<div class="form-group">
+			<button class="btn" type="submit">Sign up!</button>
+		</div>
+		<div class="sign up">
+			{% if messages %}
+				{% for message in messages %}
+					<div class="alert alert-{{ message.tags }}">
+						{{message}}
+					</div>
+				{% endfor %}
+			{% endif %}
+			{% block content %}{% endblock %}
+		</div>
+	</form>
+	<p>Have an account already? <a href="/login">Login</a></p>
+</div>
+</div>
+</body>

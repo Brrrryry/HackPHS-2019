@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<title>Login</title>
+<style>
+{% load staticfiles %}
+body {
+	background-image: url("{% static 'assets/bg.jpg' %}");
+	text-align: center;
+	background-size: cover;
+	vertical-align: middle;
+	
+}
+.container {
+	width: 50%;
+	height: 50%;
+	float: center;
+	display: inline-block;
+	text-align: center;
+	vertical-align: middle;
+}
+</style>
+<body>
+	{% csrf_token %}
+	<div class="container">
+		<h1>Login</h1>
+		<form method="POST">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button class="btn" type="submit">Login</button>
+		<p>Don't have an account? <a href="/register">Register</p>
+		</form>
+	</div>
+</body>
+</html>

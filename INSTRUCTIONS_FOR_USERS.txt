@@ -1,0 +1,8 @@
+Congressional App Challenge
+Creators: Ansh Bhatti, Shivam Syal, Aditya Shelke
+Instructions:
+1. Modules needed: Django
+2. Make sure python is an environment variable that can be accessed in Command Prompt by typing "python"
+3. Go to the file location of the project. Run "run.exe" by double-clicking on it. (If executable is not working, open Command Prompt, change directory to the project directory, and then type "python manage.py runserver")
+4. Type "localhost:8000" in the browser
+5. The server has now been established and the website has been loaded!

@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Chivo&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Staatliches&display=swap" rel="stylesheet">
+    </head>
+        
+        <title>Website Title</title>
+        <style>
+        {% load staticfiles %}
+        * {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            font-family: 'Josefin Sans';
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .Box1 {
+            background-image: url("{% static 'assets/Box1_Background6.jpg' %}");
+            height: 85vh;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .Box1_TextBox {
+            background-color: #27324B;
+            background-blend-mode: overlay;
+            position: relative;
+            height: 40vh;
+            width: 70vh;
+            bottom: 20%;
+            left: 60%;
+            top: 15%;
+            opacity: 0.4;
+            box-shadow: 10px 10px 5px rgb(90, 89, 89);
+        }
+
+        .Box1_Text {
+            color:white;
+            position:relative;
+            padding:5%;
+            font-size: 150%;
+            line-height: 140%;
+        }
+
+        .Box1_Text2 {
+            color:white;
+            position:relative;
+            padding: 5%;
+			padding-top: 0%;
+            font-size: 160%;
+            line-height: 140%;
+            font-weight: bold;
+        }
+
+
+        .Box4 {
+            background-image: url("{% static 'assets/Box4_Background1.jpg' %}");
+            height: 85vh;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .Box4_TextBox {
+            background-color: rgb(203, 207, 221);
+            background-blend-mode: overlay;
+            position: relative;
+            height: 40vh;
+            width: 150vh;
+            opacity: 1;
+            box-shadow: 20px 20px 1px rgb(90, 89, 89);
+            top: 20vh;
+            left: 28vh;
+            
+        }
+
+        .Box4_Text {
+            color:rgb(39, 36, 36);
+            position:relative;
+            padding:1%;
+            font-size: 300%;
+            line-height: 140%;
+        }
+
+        .Box4_Text2 {
+            color: rgb(39, 36, 36);
+            position:relative;
+            font-size: 100%;
+            line-height: 200%;
+            font-weight: bold;
+            font-family: "Open Sans", sans-serif;
+            padding-left: 100px;
+            padding-right: 100px;
+        }
+
+        .navbar {
+            overflow: hidden;
+            background-color: #333;
+            font-family: "Josefin Sans", cursive;
+            font-size: 25px;
+            text-align: left;
+            margin: 0;
+            width: 100%;
+            z-index: 999;
+            }
+
+        .navbar a {
+            font-size: 16px;
+            color: white;
+            text-align: center;
+            padding: 14px 30px;
+            text-decoration: none;
+            display:inline-block;
+            font-family: "Josefin Sans", cursive;
+            font-size: 80%;
+            }
+
+        .navbar a:hover {
+            color: black;
+            background-color: #ddd;
+            font-family: "Josefin Sans", cursive;
+            }
+        
+        .navbar img {
+            vertical-align: center;
+            padding: 8px 20px;
+            height: 44px;
+        }
+
+
+
+        .logo {
+            position: relative;
+            float: left;
+            background-color: #333;
+            border: none;
+            
+
+        }
+        
+        .a {
+            font-family: "Josefin Sans", cursive;
+            font-size: 80%;
+
+        }
+
+        body {
+            background-color: white;
+            }
+
+        h2 {
+            padding: 20px;
+            }
+
+        button {
+            width: 50;
+            }
+
+        .sticky {
+                position: fixed;
+                top: 0;
+                width: 100%;
+            }
+
+        .Box2 {
+            background-color: #F6F5F1;
+            padding: 2.8%;
+        }
+
+        .Box2_Text {
+            color:black;
+            font-size: 200%;
+            padding: 0;
+        }
+
+        .Box2_Text2 {
+            color:black;
+            font-size: 150%;
+            padding-left: 20%;
+            padding-right: 20%;
+            line-height: 160%;
+            padding-top: 0.5%;
+            font-family: "Open Sans", sans-serif;
+        }
+
+        .Box3 {
+            background-color: "yellow";
+            width: 80%;
+            margin: auto;
+            padding-bottom: 150px;
+        }
+
+        .Box3_a {
+            height: 40vh;
+            background-color: "yellow";
+            display: inline-block;
+            position: relative;
+            width: 35%;
+            padding-top: 3%;
+            padding-bottom: 5%;
+        }
+
+        .Box3_b {
+            height: 40vh;
+            background-color: "yellow";
+            display: inline-block;
+            position: relative;
+            width: 55%;
+            padding-top: 1%;
+
+        }
+
+                    /* Position the image container (needed to position the left and right arrows) */
+            .container {
+            position: relative;
+            }
+
+            /* Hide the images by default */
+            .mySlides {
+            display: none;
+            height: 500px;            
+            }
+
+            /* Add a pointer when hovering over the thumbnail images */
+            .cursor {
+            cursor: pointer;
+            }
+
+            /* Next & previous buttons */
+            .prev {
+                cursor: pointer;
+            position: relative;
+            
+            top: 40%;
+            width: auto;
+            padding: 16px;
+            margin-top: -200px;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            -webkit-user-select: none;
+            float: left;
+            background-color: rgba(136, 132, 132);
+            opacity: 0.8;
+
+            }
+            .next {
+                cursor: pointer;
+            position: relative;
+            
+            top: 40%;
+            width: auto;
+            padding: 16px;
+            margin-top: -200px;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            -webkit-user-select: none;
+            float: right;
+            background-color: rgba(136, 132, 132);
+            opacity: 0.8;
+            }
+
+            /* Position the "next button" to the right */
+            .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+            }
+
+            /* On hover, add a black background color with a little bit see-through */
+            .prev:hover,
+            .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+            }
+
+            /* Number text (1/3 etc) */
+            .numbertext {
+            color: #f2f2f2;
+            font-size: 12px;
+            padding: 8px 12px;
+            position: absolute;
+            top: 0;
+            }
+
+            /* Container for image text */
+            .caption-container {
+            text-align: center;
+            background-color: #222;
+            padding: 2px 16px;
+            color: white;
+            }
+
+            .row:after {
+            content: "";
+            display: table;
+            clear: both;
+            }
+
+            /* Six columns side by side */
+            .column {
+            float: left;
+            width: 16.66%;
+            }
+
+            /* Add a transparency effect for thumnbail images */
+            .demo {
+            opacity: 0.6;
+            }
+
+            .active,
+            .demo:hover {
+            opacity: 1;
+            }
+            
+            .Box3_Text {
+                font-size: 140%;
+                font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                line-height: 160%;
+
+            }
+
+            .demo cursor {
+                height: 0.5%;
+                object-fit: contain;
+
+            }
+
+            .Box5 {
+                position: relative;
+            }
+
+            .Box5_Title {
+                position: relative;
+
+            }
+
+            .Box5_Text {
+                width: 40%;
+                margin: auto;
+                margin-top: 40px;
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                color: rgb(0, 0, 0);
+                font-size: 320%;
+                border: solid black 2px;
+                padding: 0.5%;
+            }
+
+            .Box6 {
+                background-color:rgb(39, 36, 36);
+                opacity: 0.8;
+            }
+
+            .Login {
+                vertical-align: 50%;
+                width: 40%;
+                padding: 10px;
+                text-align: center;
+                margin:auto;
+                font-size: 200%;
+            }
+
+            .Registration {
+                font-size: 200%;
+                width: 80%;
+                line-height: 160%;
+                margin:auto;
+                font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+				padding: 20px;
+            }
+
+            .labelpadding {
+                padding: 10px;
+
+            }
+
+            .Registration_Button {
+                background-color: white;
+                color: black;
+                border: 2px solid #555555;
+                padding: 10px;
+                margin: 20px;
+            }
+
+            .Registration_Button:hover {
+                background-color: #555555;
+                color: white;
+
+            }
+			form {
+				line-height:100px;
+			}
+a.button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+
+    text-decoration: none;
+    color: initial;
+	padding: 10px;
+}
+        </style>
+
+
+    <body>
+	{% csrf_token %}
+		{% load staticfiles %}
+            <div class="navbar" id="nav">
+                    <button class = "logo"href = "#home">
+                        <img src = "{% static 'assets/Logo.png' %}"></button>
+                    <a href="#mission">Our Mission</a>
+                    <a href="#Box3">The Problem</a>
+                    <a href="#help">How We Can Help</a>
+                    <a href="#client">Our Clients</a>
+                    <a href="#registration">Login or Register</a>
+                </div> 
+
+        <div class = "Box1" id = "home">
+            <div class = "Box1_TextBox">
+
+                <p class = "Box1_Text"> "Almost 49% of all employees within the United States are extemely dissatisfied with their careers and jobs." </p>
+                <p class = "Box1_Text2"> We at ManagE are here to change that.</p>
+            </div>
+        </div>
+
+
+        <div class="Box2" id="mission">
+                <h2 class = "Box2_Text">Our Mission</h2>
+                <img height = "1" width = "450" padding = "0px" src = "{% static 'assets/Straight_Line_Icon_2.png' %}" >
+                <p class = "Box2_Text2">Throughout history, workers' rights have been ignored as companies make decisions. It is our firm belief that the employees in a business, who form the backbone of the company, should have a say in company and board decisions, allowing for transparency, fairness, and business decisions that help all members of a company. Our mission is to encourage negotiation and communication between employers and employees, and our true hope is that this will lead to greater job satisfaction for participating companies.<p>
+            </div>
+
+
+        <div class = "Box3" id = "Box3">
+            <div class = "Box3_a">
+                <p class = "Box2_Text" >The Problem
+
+                </p>
+                <p class = "Box3_Text">As the global economy gets more and more competitive, it is clear that business profits and investors are often prioritized over a company's workers. However, unlike traditional government, these workers do not hold any decision - making power within the company. This leads to a cycle in which executive board members of a company are not able to hear the decisions, suggestments, and best interests of the workers. In the worst case scenarios, this oftentimes leads to strikes, which are harmful to both the workers, the company, and communities worldwide.</p>
+            </div>
+
+            <div class = "Box3_b">
+                <div class="container">
+
+                        <!-- Full-width images with number text -->
+                        <div class="mySlides">
+                          <div class="numbertext">1 / 6</div>
+                            <img src="{% static 'assets/Picture1.jpg' %}" style="width:100%" height="500px">
+                        </div>
+                      
+                        <div class="mySlides">
+                          <div class="numbertext">2 / 6</div>
+                            <img src="{% static 'assets/Picture2.png' %}" style="width:100%" height="500px">
+                        </div>
+                      
+                        <div class="mySlides">
+                          <div class="numbertext">3 / 6</div>
+                            <img src="{% static 'assets/Picture3.png' %}" style="width:100%" height="500px">
+                        </div>
+                      
+                        <div class="mySlides">
+                          <div class="numbertext">4 / 6</div>
+                            <img src="{% static 'assets/Picture4.jpg' %}" style="width:100%" height="500px">
+                        </div>
+                      
+                        <div class="mySlides">
+                          <div class="numbertext">5 / 6</div>
+                            <img src="{% static 'assets/Picture5.png' %}" style="width:100%" height="500px">
+                        </div>
+                      
+                        <div class="mySlides">
+                          <div class="numbertext">6 / 6</div>
+                            <img src="{% static 'assets/Picture6.jpg' %}" style="width:100%" height="500px">
+                        </div>
+                      
+                        <!-- Next and previous buttons -->
+                        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                      
+                        <!-- Image text -->
+                        <div class="caption-container">
+                          <p id="caption"></p>
+                        </div>
+                      
+                        <!-- Thumbnail images -->
+                        <div class="row">
+                          <div class="column">
+                            <img class="demo cursor" src="{% static 'assets/Picture1.jpg' %}" style="width:100%" onclick="currentSlide(1)" alt="The Woods">
+                          </div>
+                          <div class="column">
+                            <img class="demo cursor" src="{% static 'assets/Picture2.png' %}" style="width:100%" onclick="currentSlide(2)" alt="Cinque Terre">
+                          </div>
+                          <div class="column">
+                            <img class="demo cursor" src="{% static 'assets/Picture3.png' %}" style="width:100%" onclick="currentSlide(3)" alt="Mountains and fjords">
+                          </div>
+                          <div class="column">
+                            <img class="demo cursor" src="{% static 'assets/Picture4.jpg' %}" style="width:100%" onclick="currentSlide(4)" alt="Northern Lights">
+                          </div>
+                          <div class="column">
+                            <img class="demo cursor" src="{% static 'assets/Picture5.png' %}" style="width:100%" onclick="currentSlide(5)" alt="Nature and sunrise">
+                          </div>
+                          <div class="column">
+                            <img class="demo cursor" src="{% static 'assets/Picture6.jpg' %}" style="width:100%" onclick="currentSlide(6)" alt="Snowy Mountains">
+                          </div>
+                        </div>
+                      </div>
+            </div>
+
+        </div>
+
+        <div class = "Box4" id="help">
+                <div class = "Box4_TextBox">
+    
+                    <p class = "Box4_Text"> How We Can Help </p>
+                    <p class = "Box4_Text2"> By using ManagE, employers will be able to "survey" their employees on potential business decisions. For employees, after they log in, they will be able to give feedback on past decisions, wages, salaries, as well as overall working conditions. Not only does this create a streamlined system of communication between various levels of a company, but in the end, will help to maximize worker satisfaction.</p>
+                </div>
+            </div>
+
+            <div class = "Box5" id='client'>
+                <div class = "Box5_Text">
+                    <p>Meet Our Clients</p>
+
+                </div>
+                
+                <div class = "Box5_Title">
+                    <img src = "{% static 'assets/Company_Pictures.png' %}" width = 60% >
+                
+                
+                </div>
+            
+
+            </div>
+				<div  id="registration">
+                    
+					<a href="login" target="_blank" class="button">Login</a>
+					
+				</div>
+                    <p class = "Registration">Interested in having your company join ManagE? If you're a business officer or executive, click here to register for your company...</p>
+
+
+                <div>
+                        <a href="register" target="_blank" class="button">Register</a>
+
+                    </div>
+
+
+                
+
+
+
+            
+
+            </body>
+            </html>
+            <script>
+            window.onscroll = function() {myFunction()};
+            
+            // Get the navbar
+            var navbar = document.getElementById("nav");
+            // Get the offset position of the navbar
+            var sticky = navbar.offsetTop;
+            
+            // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+            function myFunction() {
+              if (window.pageYOffset >= sticky) {
+                navbar.classList.add("sticky");
+                
+              } else {
+                navbar.classList.remove("sticky");
+              }
+            }
+
+
+
+
+            var slideIndex = 1;
+            showSlides(slideIndex);
+
+            // Next/previous controls
+            function plusSlides(n) {
+            showSlides(slideIndex += n);
+            }
+
+            // Thumbnail image controls
+            function currentSlide(n) {
+            showSlides(slideIndex = n);
+            }
+
+            function showSlides(n) {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("demo");
+            var captionText = document.getElementById("caption");
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";
+            dots[slideIndex-1].className += " active";
+            captionText.innerHTML = dots[slideIndex-1].alt;
+            }
+            </script>
+
+            
+
+    </body>
+</html>

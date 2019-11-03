@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+  {% load staticfiles %}
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <title>ManagE</title>
+  </head>
+  {% load staticfiles %}
+  <div class="headerFixedBar">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="pullLeft">
+          <a class="headerLogoText" href="/manage" title="ManagE"><img class="headerLogoImage"src="{% static 'assets/managelogo.png' %}">ManagE for Exxon Mobil</a>
+        </div>
+        <div class="pullRight">
+          <a class="btn btn-primary themeButton"href="/logout" title="ManagE">Logout: {{ request.user.get_full_name }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 paginationBar forumModule forumMargin" id="paginationBar">
+          <a href="/manage" style="padding-left: 5px;">Home</a><i class="fa fa-chevron-circle-right paginationArrow"></i><a href="/manage">Announcement</a><i class="fa fa-chevron-circle-right paginationArrow"></i><a onclick="showDiscussion(1)" href="#">Discussions</a>
+        </div>
+
+      </div>
+          <div id="category_1" class="row forumModule forumMargin">
+            <a href="#" onclick="showDiscussions(1)">
+            <div class="col-lg-12 columnPad">
+              <div class="pullLeft">
+                <h1 style="margin-top:7px;">Shifting Oil Production to China</h1>
+              </div>
+              <div class="pullRight">
+                <a id="startDiscussionButton_1" class="btn btn-primary themeButton" href="/discussions"  style="margin-bottom: 5px;" onclick="testJS(1)">Start Discussion</a>
+              </div>
+            </div>
+            </a>
+          </div>
+<!--
+          <div id="cat_new_discussion_1"class="row forumPad" style="display: none;">
+            <div class="col-lg-12">
+              <form>
+                <div class="form-group">
+                  Title
+                  <input type="text" name="newDiscussionTitle" class="form-control" size="40" id="newDiscussionTitle"></input>
+                  Content
+                  <textarea class="newDiscussionText form-control" name="newDiscussionText" rows="10" id="newDiscussionText"></textarea>
+                  <button class="themeButton" style="margin-left: 0px;" onclick="testJS(1)">Post</button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+        -->
+          <div id="cat_discussions_1" class="row" style="display:none; padding-top: 0px; width: 100%;">
+            <table class="forumTable">
+              <thead>
+
+                <th class="pullLeft">Author</th>
+                <th class="pullRight">Discussion</th>
+              </thead>
+              <tr class="forumModule">
+
+                <td class="pullLeft"><a onlick="testJS(1)" href="/discussions">Anonymous</a></td>
+                <td class="pullRight"><a onlick="testJS(1)"href="/discussions">Click here!</a></td>
+              </tr>
+
+            </table>
+            <!--
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="formPad pullRight" style="margin-bottom: 25px;">
+                  <a class="label label-primary"href="#">View More</a>
+                </div>
+              </div>
+            </div>
+          -->
+          </div>
+
+            <div id="category_2" class="row forumModule forumMargin">
+              <a href="#" onclick="showDiscussions(2)">
+              <div class="col-lg-12 columnPad">
+                <div class="pullLeft">
+                  <h1 style="margin-top:7px;">Expands Low-Emissions Technology Research</h1>
+                </div>
+                <div class="pullRight">
+                  <a id="startDiscussionButton_2" class="btn btn-primary themeButton" href="/discussions"  style="margin-bottom: 5px;" onclick="testJS(2)">Start Discussion</a>
+                </div>
+              </div>
+              </a>
+            </div>
+<!--
+            <div id="cat_new_discussion_2"class="row forumPad" style="display: none;">
+              <div class="col-lg-12">
+                <form>
+                  <div class="form-group">
+                    Title
+                    <input type="text" name="newDiscussionTitle" class="form-control" size="40" id="newDiscussionTitle"></input>
+                    Content
+                    <textarea class="newDiscussionText form-control" name="newDiscussionText" rows="10" id="newDiscussionText"></textarea>
+                    <button class="themeButton" style="margin-left: 0px;" onclick="testJS(2)">Post</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+-->
+
+
+            <div id="cat_discussions_2" class="row" style="display:none; padding-top: 0px; width: 100%;">
+              <table class="forumTable">
+                <thead>
+
+                  <th class="pullLeft">Author</th>
+                  <th class="pullRight">Discussion</th>
+                </thead>
+                <tr class="forumModule">
+
+                  <td class="pullLeft"><a href="/discussions">Anonymous</a></td>
+                  <td class="pullRight"><a onlick="showDiscussion(2)"href="#">Click here!</a></td>
+                </tr>
+
+              </table>
+              <!--
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="formPad pullRight" style="margin-bottom: 25px;">
+                    <a class="label label-primary"href="#">View More</a>
+                  </div>
+                </div>
+              </div>
+            -->
+            </div>
+
+              <div id="category_3" class="row forumModule forumMargin">
+                <a href="#" onclick="showDiscussions(3)">
+                <div class="col-lg-12 columnPad">
+                  <div class="pullLeft">
+                    <h1 style="margin-top:7px;">Sell Norway Upstream Operations for $4.5 Billion</h1>
+                  </div>
+                  <div class="pullRight">
+                    <a id="startDiscussionButton_3" class="btn btn-primary themeButton" href="/discussions"  style="margin-bottom: 5px;" onclick="testJS(3)">Start Discussion</a>
+                  </div>
+                </div>
+                </a>
+              </div>
+<!--
+              <div id="cat_new_discussion_3"class="row forumPad" style="display: none;">
+                <div class="col-lg-12">
+                  <form>
+                    <div class="form-group">
+                      Title
+                      <input type="text" name="newDiscussionTitle" class="form-control" size="40" id="newDiscussionTitle"></input>
+                      Content
+                      <textarea class="newDiscussionText form-control" name="newDiscussionText" rows="10" id="newDiscussionText"></textarea>
+                      <button class="themeButton" style="margin-left: 0px;" onclick="testJS(3)">Post</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+-->
+
+              <div id="cat_discussions_3" class="row" style="display:none; padding-top: 0px; width: 100%;">
+                <table class="forumTable">
+                  <thead>
+
+                    <th class="pullLeft">Author</th>
+                    <th class="pullRight">Discussion</th>
+                  </thead>
+                  <tr class="forumModule">
+
+                    <td class="pullLeft"><a href="/discussions">Anonymous</a></td>
+                    <td class="pullRight"><a onlick="showDiscussion(3)"href="#">Click here!</a></td>
+                  </tr>
+
+                </table>
+                <!--
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="formPad pullRight" style="margin-bottom: 25px;">
+                      <a class="label label-primary"href="#">View More</a>
+                    </div>
+                  </div>
+                </div>
+              -->
+              </div>
+
+                <div id="category_4" class="row forumModule forumMargin">
+                  <a href="#" onclick="showDiscussions(4)">
+                  <div class="col-lg-12 columnPad">
+                    <div class="pullLeft">
+                      <h1 style="margin-top:7px;">Oil Discovery Offshore Guyana at Tripletail</h1>
+                    </div>
+                    <div class="pullRight">
+                      <a id="startDiscussionButton_4" class="btn btn-primary themeButton" href="/discussions"  style="margin-bottom: 5px;" onclick="testJS(4)">Start Discussion</a>
+                    </div>
+                  </div>
+                  </a>
+                </div>
+<!--
+                <div id="cat_new_discussion_4"class="row forumPad" style="display: none;">
+                  <div class="col-lg-12">
+                    <form>
+                      <div class="form-group">
+                        Title
+                        <input type="text" name="newDiscussionTitle" class="form-control" size="40" id="newDiscussionTitle"></input>
+                        Content
+                        <textarea class="newDiscussionText form-control" name="newDiscussionText" rows="10" id="newDiscussionText"></textarea>
+                        <button class="themeButton" style="margin-left: 0px;" onclick="testJS(4)">Post</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+-->
+
+                <div id="cat_discussions_4" class="row" style="display:none; padding-top: 0px; width: 100%;">
+                  <table class="forumTable">
+                    <thead>
+
+                      <th class="pullLeft">Author</th>
+                      <th class="pullRight">Discussion</th>
+                    </thead>
+                    <tr class="forumModule">
+
+                      <td class="pullLeft"><a href="/discussions">Anonymous</a></td>
+                      <td class="pullRight"><a onlick="showDiscussion(4)"href="#">Click here!</a></td>
+                    </tr>
+
+                  </table>
+                  <!--
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="formPad pullRight" style="margin-bottom: 25px;">
+                        <a class="label label-primary"href="#">View More</a>
+                      </div>
+                    </div>
+                  </div>
+                -->
+                </div>
+
+                  <div id="category_5" class="row forumModule forumMargin">
+                    <a href="#" onclick="showDiscussions(5)">
+                    <div class="col-lg-12 columnPad">
+                      <div class="pullLeft">
+                        <h1 style="margin-top:7px;">SABIC to Proceed with Gulf Coast Growth Ventures Project</h1>
+                      </div>
+                      <div class="pullRight">
+                        <a id="startDiscussionButton_5" class="btn btn-primary themeButton" href="/discussions"  style="margin-bottom: 5px;" onclick="testJS(5)">Start Discussion</a>
+                      </div>
+                    </div>
+                    </a>
+                  </div>
+<!--
+                  <div id="cat_new_discussion_5"class="row forumPad" style="display: none;">
+                    <div class="col-lg-12">
+                      <form>
+                        <div class="form-group">
+                          Title
+                          <input type="text" name="newDiscussionTitle" class="form-control" size="40" id="newDiscussionTitle"></input>
+                          Content
+                          <textarea class="newDiscussionText form-control" name="newDiscussionText" rows="10" id="newDiscussionText"></textarea>
+                          <button class="themeButton" style="margin-left: 0px;" onclick="testJS(5)">Post</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+-->
+
+                  <div id="cat_discussions_5" class="row" style="display:none; padding-top: 0px; width: 100%;">
+                    <table class="forumTable">
+                      <thead>
+
+                        <th class="pullLeft">Author</th>
+                        <th class="pullRight">Discussion</th>
+                      </thead>
+                      <tr class="forumModule">
+
+                        <td class="pullLeft"><a href="/discussions">Anonymous</a></td>
+                        <td class="pullRight"><a onlick="showDiscussion(5)"href="#">Click here!</a></td>
+                      </tr>
+
+                    </table>
+                    <!--
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <div class="formPad pullRight" style="margin-bottom: 25px;">
+                          <a class="label label-primary"href="#">View More</a>
+                        </div>
+                      </div>
+                    </div>
+                  -->
+                  </div>
+
+
+      </div>
+
+
+  </body>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"type="text/javascript"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script type="text/javascript">
+  function showDiscussions(cat_id){
+    var html_id="#cat_discussions_" + cat_id;
+    if($(html_id).css("display")=="block"){
+      $(html_id).css("display", "none");
+    } else {
+      $(html_id).css("display", "block");
+
+    }
+
+  }
+
+  function testJS(number) {
+      var a = number;
+      localStorage.setItem("titleNum", a);
+
+  }
+  </script>
+
+
+</html>

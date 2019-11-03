@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+  {% load staticfiles %}
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>ManagE</title>
+  </head>
+  {% load staticfiles %}
+  <div class="headerFixedBar">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="pullLeft">
+          <a class="headerLogoText" href="#" title="ManagE"><img class="headerLogoImage"src="{% static 'assets/managelogo.png' %}">ManagE for Exxon Mobil</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <body>
+    <h1>Logout Successful!</h1>
+	<p>Need to login? <a href="/login">Login</a></p>
+	<p>Need to register? <a href="/register">Register</a></p>
+  </body>
+</html>

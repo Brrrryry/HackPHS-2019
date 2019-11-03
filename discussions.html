@@ -1,0 +1,281 @@
+
+      <!DOCTYPE html>
+      <html>
+      <head>
+	  {% load staticfiles %}
+        <title>ManagE</title>
+        <script type='text/javascript' src='https://cdn.scaledrone.com/scaledrone.min.js'></script>
+        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!--<script type='text/javascript' src='http://0.0.0.0:8080/scaledrone.js'></script>-->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+
+      </head>
+	  {% load staticfiles %}
+      <div class="headerFixedBar">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="pullLeft">
+              <a class="headerLogoText" href="/manage" title="ManagE"><img class="headerLogoImage"src="{% static 'assets/managelogo.png' %}">ManagE for Exxon Mobil</a>
+            </div>
+            <div class="pullRight">
+              <a class="btn btn-primary themeButton"href="/logout" title="ManagE">Logout</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <body onload="getTitleNum()">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12 paginationBar forumModule forumMargin" id="paginationBar">
+              <a href="/manage" style="padding-left: 5px;">Home</a><i class="fa fa-chevron-circle-right paginationArrow"></i><a href="/manage">Announcement</a><i class="fa fa-chevron-circle-right paginationArrow"></i><a href="/discussions">Discussions</a>
+            </div>
+          </div>
+        <div class="headerFixedBar">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="pullLeft">
+                <a class="headerLogoText" href="/manage" title="ManagE"><img class="headerLogoImage"src="{% static 'assets/managelogo.png' %}">ManagE for Exxon Mobil</a>
+              </div>
+              <div class="pullRight">
+                <a class="btn btn-primary themeButton" href="logout.html" title="ManagE">Logout: {{ request.user.get_full_name }}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+        <div id="title1" class="row forumMargin" style="display:none;">
+          <a href="#">
+          <div class="col-lg-12 columnPad">
+            <div>
+              <h1 style="margin-top:7px;">Shifting Oil Production to China</h1>
+            </div>
+          </div>
+          </a>
+        </div>
+        <div id="title2" class="row forumMargin" style="display:none;">
+          <a href="#">
+          <div class="col-lg-12 columnPad">
+            <div>
+              <h1 style="margin-top:7px;">Expands Low-Emissions Technology Research</h1>
+            </div>
+          </div>
+          </a>
+        </div>
+        <div id="title3" class="row forumMargin" style="display:none;">
+          <a href="#">
+          <div class="col-lg-12 columnPad">
+            <div>
+              <h1 style="margin-top:7px;">Sell Norway Upstream Operations for $4.5 Billion</h1>
+            </div>
+          </div>
+          </a>
+        </div>
+        <div id="title4" class="row forumMargin" style="display:none;">
+          <a href="#">
+          <div class="col-lg-12 columnPad">
+            <div>
+              <h1 style="margin-top:7px;">Oil Discovery Offshore Guyana at Tripletail</h1>
+            </div>
+          </div>
+          </a>
+        </div>
+        <div id="title5" class="row forumMargin" style="display:none;">
+          <a href="#">
+          <div class="col-lg-12 columnPad">
+            <div>
+              <h1 style="margin-top:7px;">SABIC to Proceed with Gulf Coast Growth Ventures Project</h1>
+            </div>
+          </div>
+          </a>
+        </div>
+
+
+        <div class="members-count">-</div>
+        <div class="members-list">-</div>
+        <div class="messages"></div>
+        <form class="message-form" onsubmit="return false;">
+          <input class="message-form__input" placeholder="Type a message.." type="text"/>
+          <input class="message-form__button" value="Send" type="submit"/>
+        </form>
+
+</div>
+      </body>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"type="text/javascript"></script>
+      <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script>
+      function getTitleNum(){
+        var num = localStorage.getItem("titleNum");
+        showTitle(num);
+      }
+
+      function showTitle(cat_id){
+        var html_id="#title"+cat_id;
+
+        if($(html_id).css("display")=="inline-block"){
+          $(html_id).css("display", "none");
+        }
+        else{
+          $(html_id).css("display", "inline-block");
+
+        }
+        var pathoftexts = "messages.txt";
+        var fso = new ActiveXObject("Scripting.FileSystemObject");
+        var a = fso.CreateTextFile(pathoftexts, true);
+        a.WriteLine("hello"+cat_id);
+        a.Close();
+      }
+      const CLIENT_ID='Ks5p07p09bu1AXiF';
+
+
+      var name_mem=getRandomName();
+      const drone = new ScaleDrone(CLIENT_ID, {
+        data: { // Will be sent out as clientData via events
+          name: name_mem,
+          color: getRandomColor(),
+        },
+      });
+
+      let members = [];
+
+      drone.on('open', error => {
+        if (error) {
+          return console.error(error);
+        }
+        console.log('Successfully connected to Scaledrone');
+
+        const room = drone.subscribe('observable-room');
+        room.on('open', error => {
+          if (error) {
+            return console.error(error);
+          }
+          console.log('Successfully joined room');
+        });
+
+        room.on('members', m => {
+          members = m;
+          updateMembersDOM();
+        });
+
+        room.on('member_join', member => {
+          members.push(member);
+          updateMembersDOM();
+        });
+
+        room.on('member_leave', ({id}) => {
+          const index = members.findIndex(member => member.id === id);
+          members.splice(index, 1);
+          updateMembersDOM();
+        });
+
+        room.on('data', (text, member) => {
+          if (member) {
+            addMessageToListDOM(text, member);
+          } else {
+            // Message is from server
+          }
+        });
+      });
+
+      drone.on('close', event => {
+        console.log('Connection was closed', event);
+      });
+
+      drone.on('error', error => {
+        console.error(error);
+      });
+
+      function getRandomName() {
+        const adjs = ["autumn", "hidden", "bitter", "misty", "silent", "empty", "dry", "dark", "summer", "icy", "delicate", "quiet", "white", "cool", "spring", "winter", "patient", "twilight", "dawn", "crimson", "wispy", "weathered", "blue", "billowing", "broken", "cold", "damp", "falling", "frosty", "green", "long", "late", "lingering", "bold", "little", "morning", "muddy", "old", "red", "rough", "still", "small", "sparkling", "throbbing", "shy", "wandering", "withered", "wild", "black", "young", "solitary", "fragrant", "aged", "snowy", "proud", "floral", "restless", "divine", "polished", "ancient", "purple", "lively", "nameless"];
+        const nouns = ["waterfall", "river", "breeze", "moon", "rain", "wind", "sea", "morning", "snow", "lake", "sunset", "pine", "shadow", "leaf", "dawn", "forest", "hill", "cloud", "meadow", "sun", "glade", "bird", "brook", "butterfly", "bush", "dew", "dust", "field", "fire", "flower", "firefly", "feather", "grass", "haze", "mountain", "night", "pond", "darkness", "snowflake", "silence", "sound", "sky", "shape", "surf", "thunder", "violet", "water", "wildflower", "wave", "water", "resonance", "sun", "wood", "dream", "cherry", "tree", "fog", "frost", "voice", "paper", "frog", "smoke", "star"];
+        return (
+          adjs[Math.floor(Math.random() * adjs.length)] +
+          "_" +
+          nouns[Math.floor(Math.random() * nouns.length)]
+        );
+      }
+
+      function getRandomColor() {
+        return '#' + Math.floor(Math.random() * 0xFFFFFF).toString(16);
+      }
+
+      //------------- DOM STUFF
+
+      const DOM = {
+        membersCount: document.querySelector('.members-count'),
+        membersList: document.querySelector('.members-list'),
+        messages: document.querySelector('.messages'),
+        input: document.querySelector('.message-form__input'),
+        form: document.querySelector('.message-form'),
+      };
+
+      DOM.form.addEventListener('submit', sendMessage);
+
+      function sendMessage() {
+        const value = DOM.input.value;
+        /*a.WriteLine(name_mem + ": " + value);*/
+
+        if (value === '') {
+          return;
+        }
+        DOM.input.value = '';
+        drone.publish({
+          room: 'observable-room',
+          message: value,
+        });
+      }
+      /*var msgcont=value;
+      a.WriteLine(name_mem + ": " + msgcont);*/
+
+
+      function createMemberElement(member) {
+        const { name, color } = member.clientData;
+        const el = document.createElement('div');
+        el.appendChild(document.createTextNode(name));
+        el.className = 'member';
+        el.style.color = color;
+        return el;
+      }
+
+      function updateMembersDOM() {
+        if(`${members.length}` == 1){
+          DOM.membersCount.innerText = `${members.length} user in room:`;
+        }
+        else {
+          DOM.membersCount.innerText = `${members.length} users in room:`;
+        }
+
+        DOM.membersList.innerHTML = '';
+        members.forEach(member =>
+          DOM.membersList.appendChild(createMemberElement(member))
+        );
+      }
+
+      function createMessageElement(text, member) {
+        const el = document.createElement('div');
+        el.appendChild(createMemberElement(member));
+        el.appendChild(document.createTextNode(text));
+        el.className = 'message';
+        return el;
+      }
+
+      function addMessageToListDOM(text, member) {
+        const el = DOM.messages;
+        const wasTop = el.scrollTop === el.scrollHeight - el.clientHeight;
+        el.appendChild(createMessageElement(text, member));
+        if (wasTop) {
+          el.scrollTop = el.scrollHeight - el.clientHeight;
+        }
+      }
+
+      </script>
+      </html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<title>ManagE</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.p {
+  padding: 10px;
+}
+
+img {
+  padding: 10px;
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+  font-family: 'Big Shoulders Text',cursive;
+  font-size: 25px;
+  text-align: center;
+  margin: 0;
+  width: 100%;
+}
+
+.navbar a {
+  float: center;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 50px;
+  text-decoration: none;
+  display:inline-block;
+}
+
+.navbar a:hover {
+  color: black;
+  background-color: red;
+}
+
+body {
+  background-color: yellow;
+}
+
+h2 {
+  padding: 20px;
+}
+
+button {
+  width: 50;
+  background-color: 
+}
+
+.sticky {
+	position: fixed;
+	top: 0;
+	width: 100%;
+}
+</style>
+<body>
+{% load staticfiles %}
+<div class="navbar" id="nav">
+	<a href="#our_mission" id="mission">Our Mission</a>
+	<a href="#necessity" id="need">Why you need us</a>
+	<a href="#registration" id="log">Login</a>
+</div>
+<div class="container" id="our_mission">
+	<h2>Our Mission</h2>
+	<p>Our mission is to encourage negotiations between employers and employees in order to prevent the formation of worker unions as a cause of employee dissatisfaction. Our web application statistically analyzes company data, including, but not limited to, employee pay and employee satisfaction.<p>
+</div>
+<div class="container1" id="necessity">
+	<h2>Why You Need Us</h2>
+	<img src="{%static 'assets/piegraph.png' %}" width="800" height="500" alt="image"></img>
+	<p>According to Blue Media Consulting, 44% of employees in North America are dissatisfied with their jobs. Whereas 21% are somewhat dissatisfied, 16% are somewhat satisfied, and 19% are satisfied. If you are an employer, you may not be familiar with the dissatisfaction of employees that may be hidden. If you are an employee, you might either be dissatisfied or know a colleague who's dissatisfied. The goal of this application is to ameliorate this situation and increase employee turnover rates.</p>
+</div>
+<div class="container2" id="registration">
+	<h2>Login</h2>
+	<h3>Username:</h3>
+	<input type="text" name="username">
+	<h3>Password:</h3>
+	<input type="text" name="password">
+	<p></p>
+	<button>Login</button>
+	<h3>Don't have an account? Sign up! <button>Register</button></h3>
+	<h2
+	
+</div>
+</body>
+</html>
+
+<script>
+window.onscroll = function() {myFunction()};
+
+// Get the navbar
+var navbar = document.getElementById("nav");
+// Get the offset position of the navbar
+var sticky = navbar.offsetTop;
+// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky");
+	
+  } else {
+    navbar.classList.remove("sticky");
+  }
+}
+
+
+</script>
